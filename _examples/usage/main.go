@@ -3,8 +3,9 @@ package main
 import (
 	"context"
 	"fmt"
-	"pipe"
 	"time"
+
+	"github.com/go-numb/go-pipe-for-mt4"
 )
 
 const (

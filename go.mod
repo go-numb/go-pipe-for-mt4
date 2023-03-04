@@ -1,5 +1,3 @@
-module pipe
+module github.com/go-numb/go-pipe-for-mt4
 
 go 1.20
-
-require golang.org/x/sync v0.1.0
