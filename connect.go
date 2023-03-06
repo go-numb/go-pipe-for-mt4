@@ -27,11 +27,17 @@ func Connect(
 
 	reader := bufio.NewReader(f)
 
-	for {
-		line, err := reader.ReadBytes('\n')
-		if err != nil {
-			continue
+	go func() {
+		for {
+			line, err := reader.ReadBytes('\n')
+			if err != nil {
+				continue
+			}
+			ticker <- line
 		}
-		ticker <- line
-	}
+	}()
+
+	<-ctx.Done()
+
+	return nil
 }
