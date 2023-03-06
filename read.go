@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-func Connect(
+func Read(
 	ctx context.Context,
 	filename string,
 	updateMillisec int,
