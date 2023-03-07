@@ -9,7 +9,12 @@ import (
 )
 
 const (
-	FILENAME = `C:\Users\<USER>\AppData\Roaming\MetaQuotes\Terminal\<UUID>\MQL4\Files\pipe\EURUSD.csv`
+	// for MQ4 pipe
+	//   _sym = StringSubstr(Symbol(),0,6);
+	//   pipe_name = _sym;
+	//   Print("connected file to ", pipe_name);
+	//   pipe = FileOpen("\\\\.\\pipe\\" + _sym, FILE_WRITE | FILE_BIN | FILE_ANSI);
+	FILENAME = `\\.\pipe\USDJPY`
 )
 
 func main() {
@@ -18,7 +23,7 @@ func main() {
 	defer cancel()
 
 	ch := make(chan []byte, 512)
-	go pipe.Connect(ctx, FILENAME, 10, ch)
+	go pipe.Pipe(ctx, FILENAME, 10, ch)
 
 L:
 	for {

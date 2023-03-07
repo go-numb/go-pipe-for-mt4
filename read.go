@@ -71,7 +71,7 @@ func ByteToTicker(buf []byte) *Ticker {
 	ask, _ := strconv.ParseFloat(str[1], 64)
 	bid, _ := strconv.ParseFloat(str[2], 64)
 	volume, _ := strconv.ParseFloat(str[3], 64)
-	t, _ := strconv.ParseInt(str[4], 10, 64)
+	t, _ := strconv.ParseInt(strings.TrimSuffix(str[4], "\r\n"), 10, 64)
 	timestamp := time.UnixMilli(t)
 	return &Ticker{
 		Ltp:       last,
